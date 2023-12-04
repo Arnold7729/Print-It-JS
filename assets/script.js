@@ -14,7 +14,7 @@ const slides = [
 	{
 		"image":"slide4.png",
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
-	}
+	},
 ];
 
 
@@ -43,16 +43,16 @@ arrowRight.addEventListener('click', function (){
 function updateCarousel(_index, direction) {
     
     //Revenir à la page
-    if (_index === -1 && direction === 'left') {
-      index = slides.length - 1;
-  } else if (_index === slides.length && direction === 'right') {
-      index = 0;
+    if (_index === -1 && direction === 'left') { // Si la valeur de la variable _index est egale a -1 et que je clic sur left alors la condiction est executé 
+      index = slides.length - 1;  //Ajustement de la variable index pour qu'elle soit égale à la position du dernier élément du tableau slide.
+  } else if (_index === slides.length && direction === 'right') { // si index = la longueur du tableau slide et qu'on clic sur right
+      index = 0;  //on revient a 0
   }
 
     // Mettre à jour l'image 
     const imagePath = `assets/images/slideshow/${slides[index].image}`;
     bannerImg.src = imagePath;
-    bannerImg.alt = `Slides ${index + 1}`;
+    bannerImg.alt = `Slides ${index + 1}`; //accesibilité
 
     // Mettre à jour le texte
     const tagLine = slides[index].tagLine;
@@ -68,12 +68,12 @@ function displayDots(){
     dots.innerHTML = '';
     
     for (let i = 0; i < slides.length; i++) {
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
-        dots.appendChild(dot);
+        const dot = document.createElement("div"); // Création d'une nouvelle balise "div" à chaque boucle
+        dot.classList.add("dot"); // Ajout de la classe "dot" dans la balise "div"
+        dots.appendChild(dot); // Ajout de "dot" a l'élément parent "dots"
         if (i == index) {
             dot.classList.add("dot_selected");
-        }
+        }                      // Ajout du dot_selected si i correspond a la valeur de l'index 
     }
 }
 displayDots()
